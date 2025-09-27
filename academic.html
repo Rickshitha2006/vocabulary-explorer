@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Vocabulary - Vocabulary Explorer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background:#f9f9fb; color:#333; }
+    .navbar { background:#1d3557; }
+    .navbar-brand { color:#f1faee !important; font-weight:bold; }
+    .nav-link { color:#f1faee !important; margin-right:15px; }
+    .nav-link:hover { color:#fcbf49 !important; }
+    .hero { background: linear-gradient(135deg,#457b9d,#1d3557); color:#fff; text-align:center; padding:80px 20px; border-radius:15px; margin:30px 0; }
+    .hero h1 { font-size:2.5rem; }
+    .hero p { font-size:1.2rem; margin-top:10px; }
+    .card { border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; }
+    .card:hover { transform:translateY(-6px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+    table { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    footer { background:#1d3557; color:#f1faee; padding:50px 20px; margin-top:50px; }
+    footer a { color:#f1faee; text-decoration:none; }
+    footer a:hover { color:#fcbf49; }
+    .search-bar { max-width:400px; margin:auto; margin-bottom:20px; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon text-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Academic Vocabulary</h1>
+  <p>Expand your academic language and succeed in essays, exams, and professional writing.</p>
+</div>
+<!-- Search + Sort -->
+  <div class="container text-center mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="🔎 Search academic word...">
+      </div>
+      <div class="col-md-2">
+        <button id="sortBtn" class="btn btn-primary w-100"><i class="fas fa-sort-alpha-down"></i> Sort A–Z</button>
+      </div>
+    </div>
+  </div>
+<!-- Word Table -->
+<div class="container mb-5">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle" id="wordsTable">
+      <thead class="table-dark">
+        <tr>
+          <th>Word</th>
+          <th>Meaning</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Words populated by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+            <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+            
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Academic Words Array (50+ words)
+  const academicWords = [
+    { word:"Analyze", meaning:"Examine in detail", example:"We need to analyze the results carefully." },
+    { word:"Synthesize", meaning:"Combine ideas to form a coherent whole", example:"She synthesized the research findings." },
+    { word:"Evaluate", meaning:"Assess the value or quality", example:"Evaluate the effectiveness of the solution." },
+    { word:"Hypothesis", meaning:"A proposed explanation", example:"His hypothesis was tested in the experiment." },
+    { word:"Methodology", meaning:"System of methods used in study", example:"The research methodology was clearly explained." },
+    { word:"Empirical", meaning:"Based on observation or experience", example:"Empirical evidence supports the theory." },
+    { word:"Paradigm", meaning:"Typical example or model", example:"The old paradigm is shifting to a new one." },
+    { word:"Framework", meaning:"A structure for analysis", example:"The framework helps organize the study." },
+    { word:"Conceptual", meaning:"Related to abstract ideas", example:"The conceptual model clarified the process." },
+    { word:"Quantitative", meaning:"Expressed in numbers", example:"Quantitative data was collected." },
+    { word:"Qualitative", meaning:"Descriptive data", example:"Qualitative analysis was performed." },
+    { word:"Significant", meaning:"Important or meaningful", example:"The findings were statistically significant." },
+    { word:"Variable", meaning:"A factor that can change", example:"The dependent variable was measured." },
+    { word:"Theoretical", meaning:"Based on theory", example:"The theoretical framework guided the research." },
+    { word:"Contextual", meaning:"Related to context", example:"Interpret results in a contextual manner." },
+    { word:"Correlate", meaning:"Show relationship between things", example:"The data correlate strongly." },
+    { word:"Interpret", meaning:"Explain the meaning", example:"We interpret the results in detail." },
+    { word:"Infer", meaning:"Draw a conclusion", example:"From the data, we can infer a trend." },
+    { word:"Validity", meaning:"Accuracy or credibility", example:"The validity of the study is high." },
+    { word:"Reliability", meaning:"Consistency of results", example:"The test showed high reliability." },
+    { word:"Analyze critically", meaning:"Examine thoroughly and judge", example:"Students must analyze critically." },
+    { word:"Cohesion", meaning:"Unity and consistency", example:"The essay shows good cohesion." },
+    { word:"Coherence", meaning:"Logical connection", example:"The report has strong coherence." },
+    { word:"Deduce", meaning:"Reach a conclusion logically", example:"We deduce the pattern from data." },
+    { word:"Illustrate", meaning:"Clarify with examples", example:"Illustrate concepts with diagrams." },
+    { word:"Summarize", meaning:"Give a brief statement of main points", example:"Summarize the article effectively." },
+    { word:"Critique", meaning:"Evaluate in detail", example:"Critique the argument carefully." },
+    { word:"Validate", meaning:"Confirm accuracy", example:"Validate the results with experiments." },
+    { word:"Sufficient", meaning:"Enough for purpose", example:"The evidence is sufficient to support the claim." },
+    { word:"Explicit", meaning:"Clearly stated", example:"Provide explicit instructions." },
+    { word:"Implicit", meaning:"Implied, not directly stated", example:"The meaning is implicit in the text." },
+    { word:"Formulate", meaning:"Create systematically", example:"Formulate a hypothesis before testing." },
+    { word:"Inferential", meaning:"Related to inference", example:"Inferential statistics were used." },
+    { word:"Assume", meaning:"Take for granted without proof", example:"Assume all conditions are met." },
+    { word:"Conceptualize", meaning:"Form an idea of", example:"Conceptualize your argument clearly." },
+    { word:"Deductive", meaning:"From general to specific", example:"Deductive reasoning was applied." },
+    { word:"Inductive", meaning:"From specific to general", example:"Inductive analysis revealed patterns." },
+    { word:"Perspective", meaning:"Point of view", example:"Consider the problem from a different perspective." },
+    { word:"Proficient", meaning:"Skilled, competent", example:"She is proficient in academic writing." },
+    { word:"Critical thinking", meaning:"Analyzing to form a judgment", example:"Critical thinking is essential in research." },
+    { word:"Synthesize information", meaning:"Combine data meaningfully", example:"Synthesize information from multiple sources." },
+    { word:"Argument", meaning:"Reasoning to support a point", example:"Build a strong argument in the essay." },
+    { word:"Evidence", meaning:"Proof supporting claim", example:"Provide evidence for every assertion." },
+    { word:"Interpretation", meaning:"Explanation of meaning", example:"The interpretation of results is key." },
+    { word:"Analysis", meaning:"Detailed examination", example:"Conduct a thorough analysis." },
+    { word:"Conclusion", meaning:"Final judgment or decision", example:"The conclusion summarizes the study." },
+    { word:"Evaluation", meaning:"Assessment of value", example:"Evaluation of sources is necessary." },
+    { word:"Method", meaning:"Procedure to accomplish task", example:"The method was explained clearly." },
+    { word:"Research", meaning:"Systematic investigation", example:"Research is fundamental in academia." },
+    { word:"Synthesize concepts", meaning:"Combine ideas to form understanding", example:"Synthesize concepts for clarity." },
+    { word:"Insight", meaning:"Deep understanding", example:"Provide insight into the topic." },
+	 { word:"Assumption", meaning:"A statement taken for granted", example:"The argument is based on several assumptions." },
+    { word:"Bias", meaning:"Prejudice in favor or against", example:"Be careful to avoid bias in data analysis." },
+    { word:"Cite", meaning:"Refer to a source", example:"Always cite your references properly." },
+    { word:"Context", meaning:"The circumstances surrounding an idea", example:"Understand the context before interpreting results." },
+    { word:"Discrepancy", meaning:"Difference or inconsistency", example:"There is a discrepancy between the reports." },
+    { word:"Ethical", meaning:"Relating to moral principles", example:"Ensure ethical research practices." },
+    { word:"Framework", meaning:"Structure for analysis", example:"Use the theoretical framework to guide your study." },
+    { word:"Implication", meaning:"Possible effect or result", example:"Consider the implications of the findings." },
+    { word:"Justify", meaning:"Provide reasoning or evidence", example:"You must justify your argument with facts." },
+    { word:"Limitation", meaning:"A restriction or constraint", example:"Acknowledge the limitations of your study." },
+    { word:"Outcome", meaning:"The result of an action or study", example:"The expected outcome was achieved." },
+    { word:"Phenomenon", meaning:"An observable event", example:"The phenomenon was studied extensively." },
+    { word:"Publication", meaning:"Officially issued work", example:"The study led to a publication in a journal." },
+    { word:"Significance", meaning:"Importance of a finding", example:"Discuss the significance of your results." },
+    { word:"Theory", meaning:"System of ideas to explain phenomena", example:"The theory predicts behavior accurately." },
+    { word:"Variable control", meaning:"Regulating variables in an experiment", example:"Variable control is essential for valid results." },
+    { word:"Replication", meaning:"Repeating a study for verification", example:"Replication ensures reliability of results." },
+    { word:"Validity check", meaning:"Ensuring accuracy and credibility", example:"Perform a validity check on all measurements." },
+    { word:"Skepticism", meaning:"Doubt or questioning attitude", example:"Maintain healthy skepticism in evaluating sources." },
+    { word:"Correlation", meaning:"Relationship between variables", example:"A positive correlation was observed." },
+    { word:"Causation", meaning:"Cause-and-effect relationship", example:"Causation is harder to prove than correlation." },
+  ];
+
+   const tableBody = document.querySelector("#wordsTable tbody");
+
+  function displayWords(words) {
+    tableBody.innerHTML = "";
+    if (words.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="3" class="text-center text-danger fw-bold">No words found !  Try a dictionary: <a href="https://www.oxfordlearnersdictionaries.com/" target="_blank">Oxford</a> |
+      <a href="https://dictionary.cambridge.org/" target="_blank">Cambridge</a></td>`;
+      tableBody.appendChild(row);
+      return;
+    }
+    words.forEach(w => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${w.word}</td><td>${w.meaning}</td><td>${w.example}</td>`;
+      tableBody.appendChild(row);
+    });
+  }
+
+  displayWords(academicWords);
+
+  // Search Function
+  document.getElementById("searchInput").addEventListener("input", function() {
+    const query = this.value.toLowerCase();
+    const filtered = academicWords.filter(w => w.word.toLowerCase().includes(query));
+    displayWords(filtered);
+  });
+  
+  // Sort button functionality
+document.getElementById("sortBtn").addEventListener("click", function() {
+    academicWords.sort((a, b) => a.word.localeCompare(b.word));
+    displayWords(academicWords);
+});
+
+</script>
+
+</body>
+</html>

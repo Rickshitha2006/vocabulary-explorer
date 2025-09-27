@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary Explorer - Word Lists</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9f9fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar { background: #1d3557; }
+    .navbar-brand { font-weight: bold; font-size: 1.6rem; color: #f1faee !important; }
+    .navbar-nav .nav-link { color: #f1faee !important; margin-right: 15px; font-weight: 500; transition: 0.3s; }
+    .navbar-nav .nav-link:hover { color: #fcbf49 !important; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(20px); } }
+    .hero h1 { font-size: 2.8rem; font-weight: bold; }
+    .hero p { font-size: 1.2rem; margin-top: 10px; }
+
+    .section-title { margin: 50px 0 25px; font-weight: 700; color: #1d3557; }
+    .card { border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+    /* Footer */
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 50px 20px 30px;
+      margin-top: 50px;
+    }
+    footer a { color: #f1faee; text-decoration: none; transition: 0.3s; }
+    footer a:hover { color: #fcbf49; text-decoration: underline; }
+    .social-icons a { margin-right: 15px; color: #f1faee; font-size: 1.3rem; transition: 0.3s; }
+    .social-icons a:hover { color: #fcbf49; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .navbar-nav .nav-link { margin-right: 0; margin-bottom: 10px; }
+    }
+	
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" data-aos="fade-down" data-aos-duration="1500">
+    <h1>Explore Word Lists</h1>
+    <p>Discover curated vocabulary lists to enhance your language skills for study, work, and daily life.</p>
+  </div>
+
+  <!-- Word Lists -->
+  <div class="container mb-5">
+    <h2 class="section-title text-center">📚 Popular Word Lists</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-briefcase-fill display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">Business Vocabulary</h5>
+          <p>Professional words for emails, presentations, meetings, and corporate communication.</p>
+		  <a href="business.html">Check here</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-mortarboard-fill display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Academic Vocabulary</h5>
+          <p>Words commonly used in essays, research papers, exams, and higher education.</p>
+		  <a href="academic.html">Check Here</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1400">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-chat-left-text-fill display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Everyday Vocabulary</h5>
+          <p>Enhance daily communication with common words for conversation and reading.</p>
+		  <a href="everyday.html">Check here</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title text-center mt-5">🧩 Specialized Word Lists</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-lightning-fill display-4 text-danger mb-3"></i>
+          <h5 class="fw-bold">SAT & GRE Vocabulary</h5>
+          <p>Words frequently tested in standardized exams for higher education.</p>
+		  <a href="sat.html">Check Here</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-globe display-4 text-info mb-3"></i>
+          <h5 class="fw-bold">Travel & Culture</h5>
+          <p>Words useful for traveling, cultural understanding, and social interactions abroad.</p>
+		  <a href="travel.html">Check here</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1400">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-music-note-beamed display-4 text-purple mb-3"></i>
+          <h5 class="fw-bold">Entertainment & Media</h5>
+          <p>Words commonly found in books, movies, music, and online media content.</p>
+		  <a href="entertainment.html">Check Here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 🌿 Medical Specialized Word Lists Section -->
+
+  <div class="container mb-5">
+    <h2 class="section-title text-center mb-5">⚕️ Medical Specialized Word Lists</h2>
+    <div class="row g-4">
+      
+      <!-- Anatomy -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-body-text display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">Anatomy</h5>
+          <p>Key terms for human body structure and functions.</p>
+          <a href="anatomy.html">Check Here</a>
+        </div>
+      </div>
+
+      <!-- Pharmacology -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-duration="1200">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-capsule-pill display-4 text-danger mb-3"></i>
+          <h5 class="fw-bold">Pharmacology</h5>
+          <p>Drug-related vocabulary for medical studies and practice.</p>
+          <a href="pharmacology.html">Check Here</a>
+        </div>
+      </div>
+
+      <!-- Pathology -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-duration="1400">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-virus display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Pathology</h5>
+          <p>Specialized words for diseases, symptoms, and diagnosis.</p>
+          <a href="pathology.html">Check Here</a>
+        </div>
+      </div>
+
+      <!-- Clinical Vocabulary -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-duration="1600">
+        <div class="card p-4 h-100 text-center shadow-sm">
+          <i class="bi bi-heart-pulse-fill display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Clinical Vocabulary</h5>
+          <p>Terms used in hospitals, patient care, and medical research.</p>
+          <a href="clinical.html">Check Here</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+            <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+            
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+  </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary Explorer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9f9fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #1d3557;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: #f1faee !important;
+    }
+    .navbar-nav .nav-link {
+      color: #f1faee !important;
+      margin-right: 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #fcbf49 !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+    .hero h1 { font-size: 3rem; font-weight: bold; }
+    .hero p { font-size: 1.3rem; margin-top: 15px; }
+
+    /* Section Titles */
+    .section-title {
+      margin: 60px 0 25px;
+      font-weight: 700;
+      color: #1d3557;
+    }
+
+    /* Cards */
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* List Items */
+    .list-group-item i {
+      color: #1d3557;
+      margin-right: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 50px 20px 30px;
+      margin-top: 50px;
+    }
+    footer a {
+      color: #f1faee;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    footer a:hover {
+      color: #fcbf49;
+      text-decoration: underline;
+    }
+    .social-icons a {
+      margin-right: 15px;
+      color: #f1faee;
+      font-size: 1.3rem;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #fcbf49;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .navbar-nav .nav-link { margin-right: 0; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" data-aos="fade-down" data-aos-duration="1500">
+    <h1>Unlock the Power of Words</h1>
+    <p>Enhance your communication, boost confidence, and expand knowledge everywhere.</p>
+  </div>
+
+  <!-- Word of the Day -->
+  <div class="container" data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="section-title text-center">📘 Word of the Day</h2>
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-6 col-md-8">
+        <div class="card p-4 text-center" id="wordCard"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What is Vocabulary -->
+  <div class="container mb-5" data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="section-title text-center">📘 What is Vocabulary?</h2>
+    <div class="card p-4 shadow-sm">
+      <p>
+        Vocabulary is the collection of words a person knows and uses to communicate effectively. 
+        A strong vocabulary allows you to <b>express ideas clearly</b>, 
+        <b>understand complex texts</b>, and <b>improve professional and social communication</b>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Why Vocabulary is Important -->
+  <div class="container mb-5" data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="section-title text-center">🌟 Why is Vocabulary Important?</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-chat-left-text-fill display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">Communication</h5>
+          <p>Express ideas clearly and confidently in any situation.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1200">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-book-fill display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Reading & Writing</h5>
+          <p>Understand texts easily and write more persuasively.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-duration="1400">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-briefcase-fill display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Career & Exams</h5>
+          <p>Boost confidence for presentations, interviews, and exams.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips to Improve Vocabulary -->
+  <div class="container mb-5" data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="section-title text-center">💡 Tips to Improve Vocabulary</h2>
+    <ul class="list-group list-group-flush mb-5">
+      <li class="list-group-item"><i class="bi bi-journal"></i> Maintain a personal word journal and review it daily.</li>
+      <li class="list-group-item"><i class="bi bi-book"></i> Read books, articles, and newspapers to learn words in context.</li>
+      <li class="list-group-item"><i class="bi bi-headphones"></i> Listen to podcasts and audiobooks to hear words in use.</li>
+      <li class="list-group-item"><i class="bi bi-chat-dots"></i> Practice conversations using new vocabulary.</li>
+      <li class="list-group-item"><i class="bi bi-controller"></i> Play vocabulary games and quizzes for fun learning.</li>
+    </ul>
+  </div>
+
+  <!-- Featured Word Lists -->
+  <div class="container mb-5" data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="section-title text-center">📂 Featured Word Lists</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-briefcase-fill display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">Business Vocabulary</h5>
+          <p>Words to succeed in professional communication and corporate environments.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1200">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-mortarboard-fill display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Academic Vocabulary</h5>
+          <p>Essential terms for essays, exams, and higher learning success.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1400">
+        <div class="card p-4 h-100 shadow-sm">
+          <i class="bi bi-chat-left-text-fill display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Everyday Vocabulary</h5>
+          <p>Common words to strengthen daily conversations and reading skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+            <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+            
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+    const words = [
+      { word: "Eloquent", meaning: "Fluent or persuasive in speaking or writing", example: "Her speech was eloquent and inspired everyone." },
+      { word: "Resilient", meaning: "Able to recover quickly from difficulties", example: "Children can be amazingly resilient." },
+      { word: "Serendipity", meaning: "Finding something good without looking for it", example: "Meeting her was pure serendipity." },
+      { word: "Pragmatic", meaning: "Dealing with things sensibly and realistically", example: "He took a pragmatic approach to solving the problem." },
+      { word: "Tenacious", meaning: "Holding on firmly; persistent", example: "Her tenacious spirit helped her win the championship." },
+      { word: "Meticulous", meaning: "Showing great attention to detail", example: "She kept meticulous records of her studies." },
+      { word: "Innovative", meaning: "Introducing new ideas; original and creative", example: "The company is known for its innovative designs." }
+    ];
+
+    function showRandomWord() {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      document.getElementById("wordCard").innerHTML = `
+        <h4 class="fw-bold">${randomWord.word}</h4>
+        <p><strong>Meaning:</strong> ${randomWord.meaning}</p>
+        <p><strong>Example:</strong> "${randomWord.example}"</p>
+      `;
+    }
+
+    showRandomWord();
+    setInterval(showRandomWord, 10000);
+  </script>
+</body>
+</html>

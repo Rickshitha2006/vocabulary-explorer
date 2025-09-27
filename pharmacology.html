@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacology Vocabulary | Vocabulary Explorer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9fb;
+      color: #333;
+      line-height: 1.6;
+    }
+    .navbar { background: #1d3557; }
+    .navbar-brand { font-weight: bold; font-size: 1.6rem; color: #f1faee !important; }
+    .navbar-nav .nav-link { color: #f1faee !important; margin-right: 15px; font-weight: 500; }
+    .navbar-nav .nav-link:hover { color: #fcbf49 !important; }
+
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(20px); } }
+    .hero h1 { font-size: 2.8rem; font-weight: bold; }
+    .hero p { font-size: 1.2rem; margin-top: 10px; }
+
+    .search-bar { max-width: 500px; margin: 2rem auto; }
+    .card { transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0px 6px 15px rgba(0,0,0,0.2); }
+
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 50px 20px 30px;
+      margin-top: 50px;
+    }
+    footer a { color: #f1faee; text-decoration: none; }
+    footer a:hover { color: #fcbf49; text-decoration: underline; }
+    .social-icons a { margin-right: 15px; color: #f1faee; font-size: 1.3rem; }
+    .social-icons a:hover { color: #fcbf49; }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .navbar-nav .nav-link { margin-right:0; margin-bottom:10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" data-aos="fade-down" data-aos-duration="1500">
+    <h1>Pharmacology Vocabulary</h1>
+    <p>Learn essential pharmacological terms used in medicine, prescriptions, and drug therapy.</p>
+  </div>
+
+<!-- Search + Sort -->
+  <div class="container text-center mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="🔎 Search Pharmcology word...">
+      </div>
+      <div class="col-md-2">
+        <button id="sortBtn" class="btn btn-primary w-100"><i class="fas fa-sort-alpha-down"></i> Sort A–Z</button>
+      </div>
+    </div>
+  </div>
+<div class="container my-4">
+  <div class="row g-4" id="wordList"></div>
+  <div class="text-center mt-4" id="noResult" style="display:none;">
+    <p class="text-danger fw-bold">❌ No word found. Try these resources:</p>
+    <a href="https://www.vocabulary.com" target="_blank">Vocabulary.com</a> |
+    <a href="https://www.merriam-webster.com" target="_blank">Merriam-Webster</a> |
+    <a href="https://dictionary.cambridge.org" target="_blank">Cambridge Dictionary</a>
+  </div>
+</div>
+  
+
+  <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+          <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+      const words = [
+  { word: "Analgesic", meaning: "A drug used to relieve pain." },
+  { word: "Antibiotic", meaning: "A drug used to treat bacterial infections." },
+  { word: "Antipyretic", meaning: "A drug used to reduce fever." },
+  { word: "Antihistamine", meaning: "A drug used to counteract allergic reactions." },
+  { word: "Diuretic", meaning: "A drug that promotes the excretion of urine." },
+  { word: "Vaccine", meaning: "A substance used to stimulate immunity against a disease." },
+  { word: "Placebo", meaning: "An inactive substance used as a control in clinical trials." },
+  { word: "Contraindication", meaning: "A condition that makes a particular drug or treatment inadvisable." },
+  { word: "Bioavailability", meaning: "The degree and rate at which a drug is absorbed into the bloodstream." },
+  { word: "Pharmacokinetics", meaning: "The study of how drugs move through the body (absorption, distribution, metabolism, excretion)." },
+  { word: "Receptor", meaning: "A protein molecule that receives and responds to a drug or chemical signal." },
+  { word: "Agonist", meaning: "A drug that binds to a receptor and activates it." },
+  { word: "Antagonist", meaning: "A drug that binds to a receptor but blocks its action." },
+  { word: "Half-life", meaning: "The time required for the concentration of a drug in the body to reduce by half." },
+  { word: "Toxicity", meaning: "The degree to which a substance can harm humans or animals." },
+  { word: "Immunosuppressant", meaning: "A drug that reduces the strength of the body's immune system." },
+  { word: "Sedative", meaning: "A drug that calms or induces sleep." },
+  { word: "Hypnotic", meaning: "A drug that induces sleep." },
+  { word: "Anticoagulant", meaning: "A drug that prevents blood clotting." },
+  { word: "Bronchodilator", meaning: "A drug that expands the air passages of the lungs." },
+  { word: "Corticosteroid", meaning: "A drug that reduces inflammation." },
+  { word: "Analgesia", meaning: "The absence of pain in response to a normally painful stimulus." },
+  { word: "Sedation", meaning: "The induction of a calm or sleepy state." },
+  { word: "Adverse Effect", meaning: "An unwanted or harmful effect caused by a drug." },
+  { word: "Tolerance", meaning: "A reduced response to a drug after repeated use." },
+  { word: "Addiction", meaning: "A compulsive physiological or psychological dependence on a substance." },
+  { word: "Withdrawal", meaning: "Symptoms experienced when a drug is reduced or stopped." },
+  { word: "Pharmacodynamics", meaning: "The study of the effects of drugs on the body." },
+  { word: "Excretion", meaning: "The process by which drugs are eliminated from the body." },
+  { word: "Metabolism", meaning: "The process by which the body chemically modifies a drug." },
+  { word: "Absorption", meaning: "The process by which a drug enters the bloodstream from its site of administration." },
+  { word: "Distribution", meaning: "The dispersion of a drug throughout the body's fluids and tissues." },
+  { word: "Prodrug", meaning: "A drug that is administered in an inactive form and metabolized into an active form in the body." },
+  { word: "Loading Dose", meaning: "An initial higher dose of a drug to quickly achieve therapeutic levels." },
+  { word: "Maintenance Dose", meaning: "A dose given to maintain the drug's therapeutic effect." },
+  { word: "Therapeutic Index", meaning: "The ratio between the toxic dose and therapeutic dose of a drug." },
+  { word: "Narcotic", meaning: "A drug that dulls the senses and relieves pain." },
+  { word: "Anesthetic", meaning: "A drug that causes loss of sensation or consciousness." },
+  { word: "Hemostatic", meaning: "A drug that stops bleeding." },
+  { word: "Vasodilator", meaning: "A drug that widens blood vessels." },
+  { word: "Vasoconstrictor", meaning: "A drug that narrows blood vessels." },
+  { word: "Antidepressant", meaning: "A drug used to relieve symptoms of depression." },
+  { word: "Antipsychotic", meaning: "A drug used to manage psychosis." },
+  { word: "Anticonvulsant", meaning: "A drug used to prevent or treat seizures." },
+  { word: "Beta Blocker", meaning: "A drug that reduces heart rate and blood pressure." },
+  { word: "ACE Inhibitor", meaning: "A drug that relaxes blood vessels and reduces blood pressure." },
+  { word: "Statin", meaning: "A drug used to lower cholesterol levels." },
+  { word: "Diabetes Medication", meaning: "Drugs used to manage blood sugar levels." },
+  { word: "Immunization", meaning: "The process of making a person immune to a disease using a vaccine." },
+  { word: "Chemotherapy", meaning: "The use of drugs to treat cancer." },
+  { word: "Radiopharmaceutical", meaning: "A drug containing a radioactive substance used for diagnosis or therapy." },
+  { word: "Anti-inflammatory", meaning: "A drug that reduces inflammation and swelling." },
+  { word: "Antiviral", meaning: "A drug used to treat viral infections." },
+  { word: "Antifungal", meaning: "A drug used to treat fungal infections." },
+  { word: "Immunoglobulin", meaning: "A protein used by the immune system to neutralize pathogens." },
+  { word: "Cytotoxic", meaning: "A drug that is toxic to cells, often used in cancer treatment." },
+  { word: "Neurotransmitter", meaning: "A chemical that transmits signals between nerve cells." },
+  { word: "Opioid", meaning: "A class of powerful pain-relieving drugs derived from opium." },
+  { word: "Receptor Agonist", meaning: "A drug that binds to a receptor and mimics the action of a natural substance." },
+  { word: "Receptor Antagonist", meaning: "A drug that binds to a receptor and blocks the action of a natural substance." }
+];
+
+
+  const wordList = document.getElementById("wordList");
+  const searchInput = document.getElementById("searchInput");
+  const noResult = document.getElementById("noResult");
+  const sortBtn = document.getElementById("sortBtn");
+
+  function displayWords(wordArray) {
+    wordList.innerHTML = "";
+    wordArray.forEach(item => {
+      wordList.innerHTML += `
+        <div class="col-md-4 word-card" data-aos="fade-up">
+          <div class="card p-3 h-100">
+            <h5>${item.word}</h5>
+            <p>${item.meaning}</p>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  // Initial display
+  displayWords(words);
+
+  // Search functionality
+  searchInput.addEventListener("input", function() {
+    const searchValue = this.value.toLowerCase();
+    const filtered = words.filter(item => item.word.toLowerCase().includes(searchValue));
+    displayWords(filtered);
+    noResult.style.display = filtered.length ? "none" : "block";
+  });
+
+  // Sort functionality
+  sortBtn.addEventListener("click", function() {
+    words.sort((a, b) => a.word.localeCompare(b.word));
+    displayWords(words);
+  });
+</script>
+</body>
+</html>

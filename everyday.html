@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everyday Vocabulary</title>
+   <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+  body{
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9f9fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #1d3557;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: #f1faee !important;
+    }
+    .navbar-nav .nav-link {
+      color: #f1faee !important;
+      margin-right: 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #fcbf49 !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+    .hero h1 { font-size: 3rem; font-weight: bold; }
+    .hero p { font-size: 1.3rem; margin-top: 15px; }
+    .search-bar {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    /* Footer */
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 50px 20px 30px;
+      margin-top: 50px;
+    }
+    footer a { color: #f1faee; text-decoration: none; transition: 0.3s; }
+    footer a:hover { color: #fcbf49; text-decoration: underline; }
+    .social-icons a { margin-right: 15px; color: #f1faee; font-size: 1.3rem; transition: 0.3s; }
+    .social-icons a:hover { color: #fcbf49; }
+
+	.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+  .card h5 {
+      font-weight: bold;
+      color: #3d405b;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>📖 Everyday Vocabulary</h1>
+    <p>Learn the most common words for daily conversations and communication.</p>
+  </div>
+
+<!-- Search + Sort -->
+  <div class="container text-center mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="🔎 Search everyday word...">
+      </div>
+      <div class="col-md-2">
+        <button id="sortBtn" class="btn btn-primary w-100"><i class="fas fa-sort-alpha-down"></i> Sort A–Z</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Word List -->
+  <div class="container my-5">
+    <div class="row" id="wordList">
+      <!-- Words will display here -->
+    </div>
+    <div id="noResults" class="text-center mt-4 text-danger fw-bold" style="display: none;">
+      ❌ No words found.<br>
+      <small>Try searching on 
+        <a href="https://www.vocabulary.com/" target="_blank">Vocabulary.com</a>, 
+        <a href="https://www.merriam-webster.com/" target="_blank">Merriam-Webster</a>, or 
+        <a href="https://dictionary.cambridge.org/" target="_blank">Cambridge Dictionary</a>.
+      </small>
+    </div>
+  </div>
+
+ <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+          <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+            
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const words = [
+  { word: "Happy", meaning: "Feeling or showing pleasure", example: "She was happy with her results." },
+  { word: "Angry", meaning: "Feeling strong annoyance", example: "He was angry after the argument." },
+  { word: "Quick", meaning: "Moving fast", example: "She gave a quick response." },
+  { word: "Slow", meaning: "Not fast", example: "The internet is very slow today." },
+  { word: "Beautiful", meaning: "Pleasing to the eye", example: "The flowers look beautiful." },
+  { word: "Big", meaning: "Large in size", example: "They live in a big house." },
+  { word: "Small", meaning: "Not large", example: "She has a small puppy." },
+  { word: "Cold", meaning: "Low temperature", example: "The water is very cold." },
+  { word: "Hot", meaning: "High temperature", example: "The tea is too hot to drink." },
+  { word: "Friend", meaning: "A person you like and trust", example: "He is my best friend." },
+  { word: "Family", meaning: "A group related by blood or marriage", example: "My family supports me always." },
+  { word: "Food", meaning: "Something people eat", example: "Italian food is delicious." },
+  { word: "Drink", meaning: "Take liquid into the mouth", example: "She drank orange juice." },
+  { word: "House", meaning: "A building for people to live in", example: "They built a new house." },
+  { word: "Car", meaning: "A road vehicle", example: "He bought a new car." },
+  { word: "Book", meaning: "Written pages bound together", example: "I read a book before sleeping." },
+  { word: "Pen", meaning: "An instrument for writing", example: "She wrote with a blue pen." },
+  { word: "Chair", meaning: "A seat with legs", example: "He sat on the chair." },
+  { word: "Table", meaning: "A flat surface with legs", example: "The table was full of food." },
+  { word: "School", meaning: "A place to learn", example: "She goes to school every day." },
+  { word: "Teacher", meaning: "A person who educates students", example: "The teacher explained the topic." },
+  { word: "Student", meaning: "A learner in school", example: "The student asked a question." },
+  { word: "Work", meaning: "Effort done to achieve something", example: "He finished his work early." },
+  { word: "Job", meaning: "A paid position of employment", example: "She got a new job." },
+  { word: "Love", meaning: "Strong affection for someone", example: "They are in love." },
+  { word: "Play", meaning: "To engage in activity for fun", example: "Children love to play outside." },
+  { word: "Run", meaning: "To move fast on foot", example: "He runs every morning." },
+  { word: "Walk", meaning: "Move at a regular pace", example: "She walks to the park daily." },
+  { word: "Eat", meaning: "Put food into the mouth", example: "He likes to eat pizza." },
+  { word: "Sleep", meaning: "A state of rest", example: "He sleeps early every night." },
+  { word: "Wake", meaning: "To stop sleeping", example: "She wakes up at 6 am." },
+  { word: "Laugh", meaning: "To show happiness by smiling and sound", example: "They laughed at the joke." },
+  { word: "Cry", meaning: "To shed tears", example: "The baby cried loudly." },
+  { word: "Help", meaning: "To assist someone", example: "He helped her with homework." },
+  { word: "Listen", meaning: "To pay attention to sound", example: "She listened to music." },
+  { word: "Talk", meaning: "To speak", example: "They talked for hours." },
+  { word: "Read", meaning: "Look at written words", example: "He reads a book daily." },
+  { word: "Write", meaning: "To form letters", example: "She writes stories." },
+  { word: "Shop", meaning: "A place to buy things", example: "He went to the shop." },
+  { word: "Market", meaning: "A place to sell or buy", example: "The market was crowded." },
+  { word: "Clothes", meaning: "Garments worn", example: "She bought new clothes." },
+  { word: "Shoes", meaning: "Footwear", example: "He wears black shoes." },
+  { word: "Phone", meaning: "A device to talk or message", example: "Call me on the phone." },
+  { word: "Music", meaning: "Art of sound", example: "They enjoy music every evening." },
+  { word: "Movie", meaning: "A story shown on screen", example: "We watched a movie together." },
+  { word: "Game", meaning: "Activity for fun", example: "They played a game." },
+  { word: "Travel", meaning: "Go from one place to another", example: "She loves to travel abroad." },
+  { word: "Holiday", meaning: "A day off from work", example: "We went to the beach on holiday." },
+  { word: "Weather", meaning: "The state of the atmosphere", example: "The weather is sunny today." },
+  { word: "Window", meaning: "An opening in a wall to see outside", example: "She opened the window." },
+  { word: "Door", meaning: "A movable barrier for entry", example: "He closed the door." },
+  { word: "Street", meaning: "A public road", example: "The street was busy with traffic." },
+  { word: "City", meaning: "A large town", example: "New York is a big city." },
+  { word: "Country", meaning: "A nation with its government", example: "India is a country in Asia." },
+  { word: "Bag", meaning: "A container for carrying items", example: "She carried a school bag." },
+  { word: "Computer", meaning: "An electronic device for processing data", example: "He bought a new computer." },
+  { word: "Internet", meaning: "A global computer network", example: "The internet is slow today." },
+  { word: "Coffee", meaning: "A hot beverage made from beans", example: "I drink coffee in the morning." },
+  { word: "Tea", meaning: "A hot beverage made from leaves", example: "She prefers green tea." },
+  { word: "Water", meaning: "A liquid essential for life", example: "Drink water daily." },
+  { word: "Sun", meaning: "The star at the center of our solar system", example: "The sun rises in the east." },
+  { word: "Moon", meaning: "The Earth's natural satellite", example: "The moon looks full tonight." },
+  { word: "Star", meaning: "A luminous point in the night sky", example: "Stars twinkle at night." },
+  { word: "Light", meaning: "Illumination from a source", example: "Turn on the light." },
+  { word: "Dark", meaning: "Absence of light", example: "It is dark in the room." },
+  { word: "Rain", meaning: "Water falling from clouds", example: "It started to rain heavily." },
+  { word: "Snow", meaning: "Frozen precipitation", example: "The snow covered the mountains." },
+  { word: "Wind", meaning: "Air moving naturally", example: "The wind was very strong today." },
+  { word: "Flower", meaning: "The bloom of a plant", example: "The garden is full of flowers." },
+  { word: "Tree", meaning: "A large plant with trunk and branches", example: "There is a big tree in the park." }
+];
+
+
+    function displayWords(filteredWords) {
+      const wordList = document.getElementById("wordList");
+      wordList.innerHTML = "";
+      filteredWords.forEach(item => {
+        wordList.innerHTML += `
+          <div class="col-md-4">
+            <div class="card p-3 mb-3">
+              <h5>${item.word}</h5>
+              <p><b>Meaning:</b> ${item.meaning}</p>
+              <p><b>Example:</b> ${item.example}</p>
+            </div>
+          </div>`;
+      });
+    }
+
+    // Initial display
+    displayWords(words);
+
+    // Search function
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const searchValue = this.value.toLowerCase();
+      const filteredWords = words.filter(item =>
+        item.word.toLowerCase().includes(searchValue)
+      );
+      displayWords(filteredWords);
+      document.getElementById("noResults").style.display = filteredWords.length ? "none" : "block";
+    });
+	 
+  // Sort button functionality
+document.getElementById("sortBtn").addEventListener("click", function() {
+   words.sort((a, b) => a.word.localeCompare(b.word));
+    displayWords(words);
+});
+
+  </script>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Vocabulary | Vocabulary Explorer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9fb;
+      color: #333;
+      line-height: 1.6;
+    }
+    .navbar { background: #1d3557; }
+    .navbar-brand { font-weight: bold; font-size: 1.6rem; color: #f1faee !important; }
+    .navbar-nav .nav-link { color: #f1faee !important; margin-right: 15px; font-weight: 500; }
+    .navbar-nav .nav-link:hover { color: #fcbf49 !important; }
+
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(20px); } }
+    .hero h1 { font-size: 2.8rem; font-weight: bold; }
+    .hero p { font-size: 1.2rem; margin-top: 10px; }
+
+    .search-bar { max-width: 500px; margin: 2rem auto; }
+
+    table {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    th {
+      background-color: #1d3557;
+      color: #f1faee;
+    }
+    tr:hover { background-color: #f1faee; }
+
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 50px 20px 30px;
+      margin-top: 50px;
+    }
+    footer a { color: #f1faee; text-decoration: none; }
+    footer a:hover { color: #fcbf49; text-decoration: underline; }
+    .social-icons a { margin-right: 15px; color: #f1faee; font-size: 1.3rem; }
+    .social-icons a:hover { color: #fcbf49; }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .navbar-nav .nav-link { margin-right:0; margin-bottom:10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-lightbulb"></i> Word Lists</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" data-aos="fade-down" data-aos-duration="1500">
+    <h1>Clinical Vocabulary</h1>
+    <p>Key terms and definitions commonly used in clinical practice, patient care, and hospital settings.</p>
+  </div>
+
+  <!-- Add this sort button above the table -->
+<div class="container text-center mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search clinical term...">
+    </div>
+    <div class="col-md-2">
+      <button id="sortBtn" class="btn btn-primary w-100"><i class="fas fa-sort-alpha-down"></i> Sort A–Z</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Table -->
+  <div class="container my-4">
+    <div class="table-responsive" data-aos="fade-up">
+      <table class="table table-bordered table-hover table-striped" id="wordTable">
+        <thead class="table-dark">
+          <tr>
+            <th>Term</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+       <tbody id="wordTbody">
+  <tr><td>Vital Signs</td><td>Measurements of body’s basic functions: temperature, pulse, respiration, and blood pressure.</td></tr>
+  <tr><td>ICU</td><td>Intensive Care Unit; specialized care for critically ill patients.</td></tr>
+  <tr><td>Inpatient</td><td>A patient admitted to the hospital for treatment requiring at least one overnight stay.</td></tr>
+  <tr><td>Outpatient</td><td>A patient who receives medical treatment without being admitted to the hospital.</td></tr>
+  <tr><td>Medical History</td><td>Record of past and present health conditions and treatments of a patient.</td></tr>
+  <tr><td>Diagnosis</td><td>The identification of a disease or condition based on clinical evaluation and tests.</td></tr>
+  <tr><td>Prognosis</td><td>Prediction of the likely course and outcome of a disease.</td></tr>
+  <tr><td>Medication</td><td>Drug or pharmaceutical prescribed to treat or prevent a disease.</td></tr>
+  <tr><td>Physical Exam</td><td>Systematic evaluation of the body by a clinician to check health status.</td></tr>
+  <tr><td>Lab Test</td><td>Medical test performed on a sample of blood, urine, or tissue to aid in diagnosis.</td></tr>
+  <tr><td>Allergy</td><td>An abnormal immune response to a substance that is normally harmless.</td></tr>
+  <tr><td>Anemia</td><td>Condition in which the blood has a lower than normal number of red blood cells.</td></tr>
+  <tr><td>Hypertension</td><td>High blood pressure.</td></tr>
+  <tr><td>Diabetes</td><td>Chronic disease affecting blood sugar regulation.</td></tr>
+  <tr><td>Cardiology</td><td>Medical specialty focused on heart and blood vessels.</td></tr>
+  <tr><td>Neurology</td><td>Medical specialty dealing with disorders of the nervous system.</td></tr>
+  <tr><td>Radiology</td><td>Medical imaging used for diagnosis and treatment.</td></tr>
+  <tr><td>Oncology</td><td>Study and treatment of cancer.</td></tr>
+  <tr><td>Immunization</td><td>Process of making a person immune or resistant to an infectious disease.</td></tr>
+  <tr><td>Biopsy</td><td>Removal of tissue for diagnostic examination.</td></tr>
+  <tr><td>Pathology</td><td>Study of disease, including causes, development, and effects on the body.</td></tr>
+  <tr><td>Surgery</td><td>Medical procedure involving operative techniques to treat disease or injury.</td></tr>
+  <tr><td>Anesthesia</td><td>Loss of sensation induced for medical procedures.</td></tr>
+  <tr><td>Emergency Room</td><td>Hospital department providing urgent treatment for acute illnesses and injuries.</td></tr>
+  <tr><td>Consultation</td><td>Meeting with a specialist or clinician to discuss diagnosis or treatment.</td></tr>
+  <tr><td>Rehabilitation</td><td>Therapy and care to help a patient recover after illness or injury.</td></tr>
+  <tr><td>Electrocardiogram</td><td>Test that records the electrical activity of the heart (ECG or EKG).</td></tr>
+  <tr><td>Ultrasound</td><td>Imaging technique using sound waves to visualize internal organs.</td></tr>
+  <tr><td>X-ray</td><td>Imaging technique that uses radiation to view bones and internal structures.</td></tr>
+  <tr><td>CT Scan</td><td>Computed Tomography scan; detailed cross-sectional images of the body.</td></tr>
+  <tr><td>MRI</td><td>Magnetic Resonance Imaging; detailed imaging of soft tissues using magnetic fields.</td></tr>
+  <tr><td>Vaccination</td><td>Administration of a vaccine to protect against disease.</td></tr>
+  <tr><td>Prescription</td><td>Written order by a clinician for medication or treatment.</td></tr>
+  <tr><td>Therapy</td><td>Treatment to improve physical, mental, or emotional health.</td></tr>
+  <tr><td>Physiotherapy</td><td>Rehabilitation using physical methods like exercises and massage.</td></tr>
+  <tr><td>Infection</td><td>Invasion of the body by harmful microorganisms causing illness.</td></tr>
+  <tr><td>Inflammation</td><td>Body’s response to injury or infection, characterized by redness, heat, swelling, and pain.</td></tr>
+  <tr><td>Hemoglobin</td><td>Protein in red blood cells that carries oxygen.</td></tr>
+  <tr><td>Platelets</td><td>Blood cells that help in clotting and stopping bleeding.</td></tr>
+  <tr><td>ICD Code</td><td>International Classification of Diseases code used for diagnosis and billing.</td></tr>
+  <tr><td>Thermometer</td><td>Instrument to measure body temperature.</td></tr>
+  <tr><td>Stethoscope</td><td>Medical device to listen to heart, lung, and other body sounds.</td></tr>
+
+  <tr><td>Acute</td><td>Condition with sudden onset and typically severe symptoms.</td></tr>
+  <tr><td>Chronic</td><td>Long-lasting or persistent condition, often slow-developing.</td></tr>
+  <tr><td>Sepsis</td><td>Life-threatening body response to infection that can cause tissue damage and organ failure.</td></tr>
+  <tr><td>Shock</td><td>Critical condition with insufficient blood flow to tissues and organs.</td></tr>
+  <tr><td>Hemorrhage</td><td>Excessive or uncontrolled bleeding.</td></tr>
+  <tr><td>Embolism</td><td>Obstruction of a blood vessel by a clot or foreign material.</td></tr>
+  <tr><td>Arrhythmia</td><td>Irregular heartbeat or abnormal heart rhythm.</td></tr>
+  <tr><td>Dyspnea</td><td>Difficulty or labored breathing.</td></tr>
+  <tr><td>Cyanosis</td><td>Bluish discoloration of the skin due to lack of oxygen.</td></tr>
+  <tr><td>Edema</td><td>Swelling caused by excess fluid in tissues.</td></tr>
+  <tr><td>Syncope</td><td>Temporary loss of consciousness; fainting.</td></tr>
+  <tr><td>Hypoxia</td><td>Deficiency of oxygen in tissues.</td></tr>
+  <tr><td>Hyperglycemia</td><td>High blood sugar level.</td></tr>
+  <tr><td>Hypoglycemia</td><td>Low blood sugar level.</td></tr>
+  <tr><td>Osteoporosis</td><td>Condition of weakened bones prone to fracture.</td></tr>
+  <tr><td>Arthritis</td><td>Inflammation of one or more joints, causing pain and stiffness.</td></tr>
+  <tr><td>Gastroenteritis</td><td>Inflammation of the stomach and intestines, causing vomiting and diarrhea.</td></tr>
+  <tr><td>Hepatitis</td><td>Inflammation of the liver.</td></tr>
+  <tr><td>Myocardial Infarction</td><td>Heart attack; death of heart muscle due to lack of blood supply.</td></tr>
+  <tr><td>Cataract</td><td>Clouding of the lens in the eye, causing vision loss.</td></tr>
+  <tr><td>Glaucoma</td><td>Eye disease damaging the optic nerve, often caused by high intraocular pressure.</td></tr>
+  <tr><td>Dermatitis</td><td>Inflammation of the skin causing redness, itching, or rash.</td></tr>
+  <tr><td>Seizure</td><td>Sudden, uncontrolled electrical activity in the brain.</td></tr>
+  <tr><td>Epilepsy</td><td>Neurological disorder marked by recurring seizures.</td></tr>
+  <tr><td>Asthma</td><td>Chronic lung condition causing airway inflammation and breathing difficulty.</td></tr>
+  <tr><td>Pneumonia</td><td>Infection of the lungs causing inflammation and fluid accumulation.</td></tr>
+  <tr><td>Bronchitis</td><td>Inflammation of the bronchial tubes, often causing cough and mucus.</td></tr>
+  <tr><td>Appendicitis</td><td>Inflammation of the appendix, often requiring surgery.</td></tr>
+  <tr><td>Cholecystitis</td><td>Inflammation of the gallbladder.</td></tr>
+  <tr><td>Renal Failure</td><td>Kidney’s inability to filter waste from the blood.</td></tr>
+  <tr><td>Hernia</td><td>Protrusion of an organ or tissue through the wall of the cavity containing it.</td></tr>
+  <tr><td>Thrombocytopenia</td><td>Low platelet count in the blood, leading to bleeding risk.</td></tr>
+  <tr><td>Leukemia</td><td>Cancer of blood-forming tissues, including bone marrow.</td></tr>
+  <tr><td>Lymphoma</td><td>Cancer of the lymphatic system.</td></tr>
+  <tr><td>Hemophilia</td><td>Genetic disorder that impairs blood clotting.</td></tr>
+  <tr><td>Malnutrition</td><td>Condition caused by insufficient or unbalanced nutrient intake.</td></tr>
+  <tr><td>Dehydration</td><td>Excessive loss of body water.</td></tr>
+  <tr><td>Electrolyte Imbalance</td><td>Abnormal levels of minerals like sodium or potassium in the body.</td></tr>
+  <tr><td>Intubation</td><td>Insertion of a tube into the airway to assist breathing.</td></tr>
+  <tr><td>Catheterization</td><td>Insertion of a catheter into the body to drain fluids or administer medication.</td></tr>
+  <tr><td>Defibrillation</td><td>Delivery of an electric shock to the heart to restore normal rhythm.</td></tr>
+  <tr><td>Immunodeficiency</td><td>Condition where the immune system’s ability to fight infections is reduced.</td></tr>
+
+
+</tbody>
+      </table>
+    </div>
+    <div class="text-center mt-3" id="noResult" style="display:none;">
+      <p class="text-danger fw-bold">❌ No term found. Try these resources:</p>
+      <a href="https://www.vocabulary.com" target="_blank">Vocabulary.com</a> |
+      <a href="https://www.merriam-webster.com" target="_blank">Merriam-Webster</a> |
+      <a href="https://dictionary.cambridge.org" target="_blank">Cambridge Dictionary</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+               <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+            
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+   // Search functionality
+  const searchInput = document.getElementById("searchInput");
+  const wordTbody = document.getElementById("wordTbody");
+  const noResult = document.getElementById("noResult");
+
+  searchInput.addEventListener("input", function() {
+    const searchValue = this.value.toLowerCase();
+    let found = false;
+
+    Array.from(wordTbody.rows).forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(searchValue)) {
+        row.style.display = "";
+        found = true;
+      } else {
+        row.style.display = "none";
+      }
+    });
+
+    noResult.style.display = found ? "none" : "block";
+  });
+
+  // Sort functionality
+  const sortBtn = document.getElementById("sortBtn");
+  sortBtn.addEventListener("click", function() {
+    let rows = Array.from(wordTbody.rows);
+    rows.sort((a, b) => a.cells[0].innerText.localeCompare(b.cells[0].innerText));
+    rows.forEach(row => wordTbody.appendChild(row));
+  });
+  </script>
+</body>
+</html>

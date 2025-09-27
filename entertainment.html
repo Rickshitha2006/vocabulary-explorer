@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment & Music Vocabulary</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+   body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9f9fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar { background: #1d3557; }
+    .navbar-brand { font-weight: bold; font-size: 1.6rem; color: #f1faee !important; }
+    .navbar-nav .nav-link { color: #f1faee !important; margin-right: 15px; font-weight: 500; transition: 0.3s; }
+    .navbar-nav .nav-link:hover { color: #fcbf49 !important; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(20px); } }
+    .hero h1 { font-size: 2.8rem; font-weight: bold; }
+    .hero p { font-size: 1.2rem; margin-top: 10px; }
+
+    /* Search */
+    .search-bar {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    /* Cards */
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .card h5 {
+      font-weight: bold;
+      color: #6a1b9a;
+    }
+    .card p { font-size: 0.95rem; }
+	.card h5 {
+      font-weight: bold;
+      color: #3d405b;
+    }
+
+    /* Footer */
+    footer {
+      background: #1d3557;
+      color: #f1faee;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+    footer a { color: #f1faee; text-decoration: none; transition: 0.3s; }
+    footer a:hover { color: #fcbf49; }
+    .social-icons a { margin-right: 15px; color: #f1faee; font-size: 1.3rem; transition: 0.3s; }
+    .social-icons a:hover { color: #fcbf49; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i> Vocabulary Explorer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon text-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="word.html"><i class="fas fa-list"></i> Word Lists</a></li>
+        <li class="nav-item"><a class="nav-link" href="resources.html"><i class="fas fa-book-reader"></i> Resources</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-users"></i> About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🎶 Entertainment & Music Vocabulary</h1>
+  <p>Words that bring rhythm, creativity, and joy to your world.</p>
+</div>
+
+<!-- Search + Sort -->
+  <div class="container text-center mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="🔎 Search entertainment word...">
+      </div>
+      <div class="col-md-2">
+        <button id="sortBtn" class="btn btn-primary w-100"><i class="fas fa-sort-alpha-down"></i> Sort A–Z</button>
+      </div>
+    </div>
+  </div>
+<!-- Word List -->
+<div class="container my-5">
+  <div class="row" id="wordList"></div>
+
+  <div id="noResults" class="text-center mt-4 text-danger fw-bold" style="display: none;">
+    ❌ No words found.<br>
+    <small>Try searching on 
+      <a href="https://www.vocabulary.com/" target="_blank">Vocabulary.com</a>, 
+      <a href="https://www.merriam-webster.com/" target="_blank">Merriam-Webster</a>, or 
+      <a href="https://dictionary.cambridge.org/" target="_blank">Cambridge Dictionary</a>.
+    </small>
+  </div>
+</div>
+
+<!-- Footer -->
+  <footer data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Vocabulary Explorer</h5>
+          <p>Build a stronger, richer vocabulary for life, study, and work.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="word.html">Word Lists</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Connect With Us</h5>
+          <div class="social-icons mb-2">
+            <a href="https://www.linkedin.com/in/rickshithaanandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rickshitha-developer" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <p>Email: rickshivocabexplorer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="background:#f1faee;">
+      <p class="text-center mb-0">&copy; 2025 Vocabulary Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+<script>
+  const words = [
+    { word: "Melody", meaning: "A sequence of musical notes that are pleasing to hear", example: "The song’s melody was unforgettable." },
+    { word: "Rhythm", meaning: "A strong, regular repeated pattern of movement or sound", example: "The rhythm of the drums energized the crowd." },
+    { word: "Harmony", meaning: "The combination of notes to produce chords", example: "The choir sang in perfect harmony." },
+    { word: "Encore", meaning: "An additional performance at the end of a concert due to audience demand", example: "The audience clapped until the band gave an encore." },
+    { word: "Genre", meaning: "A category of artistic work characterized by similarities in form, style, or subject", example: "Jazz is her favorite genre of music." },
+    { word: "Acoustic", meaning: "Music produced naturally without electronic amplification", example: "He performed an acoustic version of the song." },
+    { word: "Orchestra", meaning: "A large group of instrumentalists playing together", example: "The orchestra played Beethoven’s Fifth Symphony." },
+    { word: "Lyricist", meaning: "A person who writes the words of songs", example: "The lyricist worked with the composer to create a hit." },
+    { word: "Choreography", meaning: "The art of designing dance movements", example: "The choreography was stunning in the performance." },
+    { word: "Backstage", meaning: "The area behind the stage where performers prepare", example: "The actors waited backstage before entering the scene." },
+    { word: "Crescendo", meaning: "A gradual increase in loudness in music", example: "The orchestra reached a thrilling crescendo." },
+    { word: "Allegro", meaning: "A fast, lively tempo in music", example: "The symphony started with an allegro movement." },
+    { word: "Ballad", meaning: "A slow, sentimental song", example: "She sang a romantic ballad." },
+    { word: "Overture", meaning: "An introduction to a musical or theatrical performance", example: "The overture set the mood for the opera." },
+    { word: "Improvise", meaning: "To perform spontaneously without preparation", example: "The jazz pianist improvised a beautiful solo." },
+    { word: "Solo", meaning: "A piece performed by a single musician", example: "The guitarist played an amazing solo." },
+    { word: "Duet", meaning: "A performance by two artists", example: "The singers performed a heartfelt duet." },
+    { word: "Symphony", meaning: "A long composition for orchestra", example: "The orchestra performed Beethoven’s Ninth Symphony." },
+    { word: "Interlude", meaning: "A short piece between longer musical sections", example: "The interlude provided a calm pause in the concert." },
+    { word: "Acapella", meaning: "Singing without instrumental accompaniment", example: "The choir performed acapella." },
+    { word: "Forte", meaning: "A musical term for loud", example: "The band played the chorus forte." },
+    { word: "Piano", meaning: "A musical term for soft", example: "The melody started piano and grew louder." },
+    { word: "Tempo", meaning: "The speed of the music", example: "The tempo of the song increased during the chorus." },
+    { word: "Pitch", meaning: "The highness or lowness of a sound", example: "The singer hit a perfect pitch." },
+    { word: "Refrain", meaning: "A repeated line or verse in a song", example: "The chorus was a catchy refrain." },
+    { word: "Verse", meaning: "A section of a song that tells part of the story", example: "The first verse introduced the theme." },
+    { word: "Bridge", meaning: "A contrasting section that connects parts of a song", example: "The bridge added a twist to the melody." },
+    { word: "Cadenza", meaning: "A virtuoso solo passage in music", example: "The violinist played a stunning cadenza." },
+    { word: "Libretto", meaning: "The text of an opera or musical", example: "The composer wrote the libretto for the opera." },
+    { word: "Stagecraft", meaning: "The technical aspects of theatrical production", example: "The play was praised for its excellent stagecraft." },
+    { word: "Props", meaning: "Objects used on stage by actors", example: "The magician used creative props during his show." },
+    { word: "Acting", meaning: "The art of performing in plays or films", example: "Her acting in the drama was mesmerizing." },
+    { word: "Script", meaning: "The written text of a play or performance", example: "The actor memorized the script." },
+    { word: "Cue", meaning: "A signal for an actor or musician to perform", example: "He missed his cue on stage." },
+    { word: "Stage Left", meaning: "The left side of the stage from the actor's perspective", example: "Move to stage left for the next scene." },
+    { word: "Stage Right", meaning: "The right side of the stage from the actor's perspective", example: "The dancer entered stage right." },
+    { word: "Encore", meaning: "A repeated performance due to audience demand", example: "The band gave an encore after the crowd cheered." },
+    { word: "Monologue", meaning: "A speech by a single actor", example: "The actor delivered a moving monologue." },
+    { word: "Duet", meaning: "A performance by two artists", example: "The duet captivated the audience." },
+    { word: "Improvisation", meaning: "Creating performance spontaneously", example: "The comedian’s improvisation was hilarious." },
+    { word: "Soundtrack", meaning: "Music composed for a film or game", example: "The movie had a memorable soundtrack." },
+    { word: "Chorus", meaning: "A group of singers or the repeating part of a song", example: "The chorus lifted the energy of the song." },
+    { word: "Melodic", meaning: "Relating to melody", example: "Her singing was melodic and smooth." },
+    { word: "Orchestration", meaning: "Arranging music for an orchestra", example: "The orchestration made the piece rich and full." },
+    { word: "Headliner", meaning: "The main act in a concert or show", example: "The headliner performed last night." },
+    { word: "Opening Act", meaning: "The act that performs before the main performer", example: "The opening act warmed up the crowd." },
+    { word: "Ballroom", meaning: "A large room used for dances or performances", example: "They danced gracefully in the ballroom." },
+    { word: "Jam Session", meaning: "An informal gathering of musicians playing together", example: "The band had a late-night jam session." },
+];
+
+
+  function displayWords(filteredWords) {
+    const wordList = document.getElementById("wordList");
+    wordList.innerHTML = "";
+    filteredWords.forEach(item => {
+      wordList.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card p-3 h-100">
+            <h5>${item.word}</h5>
+            <p><b>Meaning:</b> ${item.meaning}</p>
+            <p><b>Example:</b> ${item.example}</p>
+          </div>
+        </div>`;
+    });
+  }
+
+  // Initial display
+  displayWords(words);
+
+  // Search function
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const searchValue = this.value.toLowerCase();
+    const filteredWords = words.filter(item =>
+      item.word.toLowerCase().includes(searchValue)
+    );
+    displayWords(filteredWords);
+    document.getElementById("noResults").style.display = filteredWords.length ? "none" : "block";
+  });
+  // Sort button functionality
+document.getElementById("sortBtn").addEventListener("click", function() {
+   words.sort((a, b) => a.word.localeCompare(b.word));
+    displayWords(words);
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
